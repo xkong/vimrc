@@ -27,6 +27,8 @@ syntax on
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+let mapleader=","
+
 "TagList
 let Tlist_Auto_Highlight_Tag=1  
 let Tlist_Auto_Open=1  
@@ -39,6 +41,9 @@ let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1  
 let Tlist_Use_SingleClick=1  
 nnoremap <silent> <F8> :TlistToggle<CR>
+" shortcuts for vundle functions
+map <leader>l <ESC>:PluginList<CR>
+map <leader>i <ESC>:PluginInstall<CR>
 
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -50,7 +55,6 @@ language message zh_CN.UTF-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-let mapleader=","
 filetype plugin indent on
 
 set completeopt=longest,menu
