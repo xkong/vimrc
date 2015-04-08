@@ -8,7 +8,7 @@ Quick start
 
 2. Install mysysgit.
 
-3. Save the following code as `curl.cmd` to your `path\to\git\git\cmd\` ::
+3. Save the following code as `curl.cmd` to your `path/to/git/git/cmd/` ::
 
     @rem Do not use "echo off" to not affect any child calls.
     @setlocal
