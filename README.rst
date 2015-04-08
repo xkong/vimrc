@@ -46,4 +46,4 @@ Step 4 will be (with windows prompt)::
     git clone https://github.com/xkong/vimrc vimrctmp
     copy vimrctmp\vimrc_windows8_unicode_user _vimrc
 
-where `\path\to\your\vim` is the path vim installed, maybe `C:\Program Files (x86)\Vim`.
+where \path\to\your\vim is the path vim installed, maybe 'C:\Program Files (x86)\Vim'.
