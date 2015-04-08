@@ -26,13 +26,10 @@ Quick start
 4. Open msysgit bash and execute the following lines ::
 
     cd ~
-    mkdir .vim
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+    git clone https://github.com/gmarik/Vundle.vim.git ~/vimfiles/bundle/Vundle.vim
     git clone https://github.com/xkong/vimrc ~/vimrctmp
 
     mv ~/vimrctmp/vimrc ~/_vimrc
 
-5. Launch `vim` and run `:PluginInstall`
-
-To install from command line: `vim +PluginInstall +qall`
+5. Launch `vim` and run `:PluginInstall`. To install from command line: `vim +PluginInstall +qall`
