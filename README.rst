@@ -33,3 +33,5 @@ Quick start
     mv ~/vimrctmp/vimrc ~/_vimrc
 
 5. Launch `vim` and run `:PluginInstall`. To install from command line: `vim +PluginInstall +qall`
+
+6. Install `ctags` and flake8(`pip install flake8`) for TagList and flake8 support.
