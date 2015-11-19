@@ -63,10 +63,11 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 let g:pydiction_location = '~\vimfiles\bundle\pydiction\complete-dict'
 
 colorscheme molokai
-autocmd FileType python set colorcolumn=79 | set textwidth=79
+autocmd FileType python set colorcolumn=79 | set textwidth=99
 au BufRead,BufNewFile *.py set fileformat=unix
 au BufRead,BufNewFile *.html set fileformat=unix
 
@@ -83,6 +84,7 @@ endif
 autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
 autocmd! BufNewFile,BufRead *.ino setlocal ft=arduino
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+autocmd BufNewFile,BufReadPost *.js setl shiftwidth=2 expandtab
 
 set laststatus=2
 let g:airline_section_b = '%{&ff}%   %{&fileencoding?&fileencoding:&encoding}'
@@ -95,4 +97,11 @@ Plugin 'taglist.vim'
 Plugin 'rkulla/pydiction'
 Plugin 'andviro/flake8-vim'
 Plugin 'bling/vim-airline'
+Plugin 'joonty/vim-phpqa'
+Plugin 'mattn/emmet-vim'
 call vundle#end()
+
+let g:phpqa_codesniffer_args = "--standard=Zend"  
+let g:phpqa_codesniffer_autorun = 1        "  default =1 on save  
+let g:phpqa_messdetector_ruleset = ''  
+let g:phpqa_messdetector_autorun = 0  
