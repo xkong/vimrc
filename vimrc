@@ -41,6 +41,7 @@ let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1  
 let Tlist_Use_SingleClick=1  
 nnoremap <silent> <F8> :TlistToggle<CR>
+
 " shortcuts for vundle functions
 map <leader>l <ESC>:PluginList<CR>
 map <leader>i <ESC>:PluginInstall<CR>
@@ -49,6 +50,9 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+"Flake8 autofix
+map <F6> :PyFlakeAuto<CR>
 
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
@@ -85,6 +89,8 @@ autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
 autocmd! BufNewFile,BufRead *.ino setlocal ft=arduino
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.js setl shiftwidth=2 expandtab
+autocmd BufNewFile,BufReadPost *.css setl shiftwidth=2 expandtab
+autocmd BufNewFile,BufReadPost *.sass setl shiftwidth=2 expandtab
 
 set laststatus=2
 let g:airline_section_b = '%{&ff}%   %{&fileencoding?&fileencoding:&encoding}'
@@ -99,9 +105,15 @@ Plugin 'andviro/flake8-vim'
 Plugin 'bling/vim-airline'
 Plugin 'joonty/vim-phpqa'
 Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 
 let g:phpqa_codesniffer_args = "--standard=Zend"  
 let g:phpqa_codesniffer_autorun = 1        "  default =1 on save  
 let g:phpqa_messdetector_ruleset = ''  
 let g:phpqa_messdetector_autorun = 0  
+
+
+" nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
