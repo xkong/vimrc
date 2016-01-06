@@ -27,10 +27,10 @@ Quick start
 
 	cd ~
 
-	git clone https://github.com/gmarik/Vundle.vim.git ~/vimfiles/bundle/Vundle.vim
-	git clone https://github.com/xkong/vimrc ~/vimrctmp
+	git clone https://github.com/gmarik/Vundle.vim.git ~/vimfiles/bundle/Vundle.vim  
+	git clone https://github.com/xkong/vimrc ~/vimrctmp  
 
-	mv ~/vimrctmp/vimrc ~/_vimrc
+	mv ~/vimrctmp/vimrc   ~/_vimrc
 
 5. Launch `vim` and run `:PluginInstall`. To install from command line: `vim +PluginInstall +qall`; Or you can launch vim and press `,l` to show plugins and `,i` to install the plugins.
 
@@ -42,8 +42,8 @@ For Windows8.1 with unicode username
 Step 4 will be (with windows prompt):
 
 	cd /D \path\to\your\vim
-	git clone https://github.com/gmarik/Vundle.vim.git vimfiles/bundle/Vundle.vim
-	git clone https://github.com/xkong/vimrc vimrctmp
-	copy vimrctmp\vimrc_windows8_unicode_user _vimrc
+	git clone https://github.com/gmarik/Vundle.vim.git vimfiles/bundle/Vundle.vim  
+	git clone https://github.com/xkong/vimrc vimrctmp  
+	copy vimrctmp\vimrc_windows8_unicode_user _vimrc  
 
 where `\path\to\your\vim` is the path vim installed, maybe `C:\Program Files (x86)\Vim`.
