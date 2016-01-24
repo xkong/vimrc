@@ -2,21 +2,21 @@
 set ff=unix
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8 
+set fileencodings=utf-8
 
-set columns=86 lines=30 
+set columns=86 lines=30
 set nocompatible
 set wrap
 set ambiwidth=double
-set smartindent  
-set smarttab  
-set expandtab  
-set tabstop=4  
-set softtabstop=4  
-set shiftwidth=4  
+set smartindent
+set smarttab
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set backspace=2
-set mouse=a  
-set nu 
+set mouse=a
+set nu
 set ruler
 set wildmenu
 set mouseshape=n:beam
@@ -30,17 +30,19 @@ behave mswin
 let mapleader=","
 
 "TagList
-let Tlist_Auto_Highlight_Tag=1  
-let Tlist_Auto_Open=1  
-let Tlist_Auto_Update=1  
-let Tlist_Display_Tag_Scope=1  
-let Tlist_Exit_OnlyWindow=1  
-let Tlist_Enable_Dold_Column=1  
-let Tlist_File_Fold_Auto_Close=1  
-let Tlist_Show_One_File=1  
-let Tlist_Use_Right_Window=1  
-let Tlist_Use_SingleClick=1  
+let Tlist_Auto_Highlight_Tag=1
+let Tlist_Auto_Open=1
+let Tlist_Auto_Update=1
+let Tlist_Display_Tag_Scope=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Enable_Dold_Column=1
+let Tlist_File_Fold_Auto_Close=1
+let Tlist_Show_One_File=1
+let Tlist_Use_Right_Window=1
+let Tlist_Use_SingleClick=1
 nnoremap <silent> <F8> :TlistToggle<CR>
+
+let g:better_whitespace_verbosity=1
 
 " shortcuts for vundle functions
 map <leader>l <ESC>:PluginList<CR>
@@ -53,6 +55,11 @@ map <c-h> <c-w>h
 
 "Flake8 autofix
 map <F6> :PyFlakeAuto<CR>
+"Better space
+map <F7> :StripWhitespace<CR>
+" nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
 
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
@@ -91,7 +98,7 @@ autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.js setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.css setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.sass setl shiftwidth=2 expandtab
-
+autocmd FileType html,js,css autocmd BufWritePre <buffer> StripWhitespace
 set laststatus=2
 let g:airline_section_b = '%{&ff}%   %{&fileencoding?&fileencoding:&encoding}'
 
@@ -106,14 +113,12 @@ Plugin 'bling/vim-airline'
 Plugin 'joonty/vim-phpqa'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ntpeters/vim-better-whitespace'
 call vundle#end()
 
-let g:phpqa_codesniffer_args = "--standard=Zend"  
-let g:phpqa_codesniffer_autorun = 1        "  default =1 on save  
-let g:phpqa_messdetector_ruleset = ''  
-let g:phpqa_messdetector_autorun = 0  
+let g:phpqa_codesniffer_args = "--standard=Zend"
+let g:phpqa_codesniffer_autorun = 1        "  default =1 on save
+let g:phpqa_messdetector_ruleset = ''
+let g:phpqa_messdetector_autorun = 0
 
 
-" nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
