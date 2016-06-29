@@ -42,8 +42,6 @@ let Tlist_Use_Right_Window=1
 let Tlist_Use_SingleClick=1
 nnoremap <silent> <F8> :TlistToggle<CR>
 
-let g:better_whitespace_verbosity=1
-
 " shortcuts for vundle functions
 map <leader>l <ESC>:PluginList<CR>
 map <leader>i <ESC>:PluginInstall<CR>
@@ -53,13 +51,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-"Flake8 autofix
-map <F6> :PyFlakeAuto<CR>
-"Better space
-map <F7> :StripWhitespace<CR>
-" nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
 
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
@@ -98,7 +89,9 @@ autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.js setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.css setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.sass setl shiftwidth=2 expandtab
-autocmd FileType html,js,css autocmd BufWritePre <buffer> StripWhitespace
+autocmd BufNewFile,BufReadPost *.scss setl shiftwidth=2 expandtab
+autocmd BufNewFile,BufReadPost *.less setl shiftwidth=2 expandtab
+
 set laststatus=2
 let g:airline_section_b = '%{&ff}%   %{&fileencoding?&fileencoding:&encoding}'
 
@@ -114,11 +107,23 @@ Plugin 'joonty/vim-phpqa'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'groenewege/vim-less'
+Plugin 'skammer/vim-css-color.git'
+Plugin 'hail2u/vim-css3-syntax'
 call vundle#end()
 
 let g:phpqa_codesniffer_args = "--standard=Zend"
-let g:phpqa_codesniffer_autorun = 1        "  default =1 on save
+let g:phpqa_codesniffer_autorun = 1
 let g:phpqa_messdetector_ruleset = ''
 let g:phpqa_messdetector_autorun = 0
 
+" nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
 
+" Flake8 autofix
+map <F6> :PyFlakeAuto<CR>
+map <F7> :StripWhitespace<CR>
+autocmd FileType python,html,javascript,css autocmd BufWritePre <buffer> StripWhitespace
+
+au BufNewFile,BufRead *.less set filetype=less
