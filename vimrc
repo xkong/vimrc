@@ -87,6 +87,7 @@ autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
 autocmd! BufNewFile,BufRead *.ino setlocal ft=arduino
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.js setl shiftwidth=2 expandtab
+autocmd BufNewFile,BufReadPost *.jsx setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.css setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.sass setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.scss setl shiftwidth=2 expandtab
@@ -110,6 +111,8 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'groenewege/vim-less'
 Plugin 'skammer/vim-css-color.git'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 call vundle#end()
 
 let g:phpqa_codesniffer_args = "--standard=Zend"
@@ -127,3 +130,4 @@ map <F7> :StripWhitespace<CR>
 autocmd FileType python,html,javascript,css autocmd BufWritePre <buffer> StripWhitespace
 
 au BufNewFile,BufRead *.less set filetype=less
+au BufNewFile,BufRead *.jsx set filetype=javascript
