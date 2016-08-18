@@ -51,7 +51,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
 source $VIMRUNTIME/delmenu.vim
@@ -70,8 +69,7 @@ let g:pydiction_location = '~\vimfiles\bundle\pydiction\complete-dict'
 
 colorscheme molokai
 autocmd FileType python set colorcolumn=79 | set textwidth=99
-au BufRead,BufNewFile *.py set fileformat=unix
-au BufRead,BufNewFile *.html set fileformat=unix
+au BufRead,BufNewFile *.py, *.less, *.css, *.js, *.html set fileformat=unix
 
 if has("gui_running")
   if has("gui_gtk2")
@@ -111,8 +109,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'groenewege/vim-less'
 Plugin 'skammer/vim-css-color.git'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/syntastic'
 call vundle#end()
 
 let g:phpqa_codesniffer_args = "--standard=Zend"
@@ -126,8 +123,22 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Flake8 autofix
 map <F6> :PyFlakeAuto<CR>
+" StripWhitespace
 map <F7> :StripWhitespace<CR>
 autocmd FileType python,html,javascript,css autocmd BufWritePre <buffer> StripWhitespace
 
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.jsx set filetype=javascript
+
+" syntastic
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_css_checkers = ['stylelint']
