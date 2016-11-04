@@ -4,7 +4,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
-set columns=86 lines=30
+set columns=120 lines=30
 set nocompatible
 set wrap
 set ambiwidth=double
@@ -68,8 +68,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 let g:pydiction_location = '~\vimfiles\bundle\pydiction\complete-dict'
 
 colorscheme molokai
-autocmd FileType python set colorcolumn=79 | set textwidth=99
-au BufRead,BufNewFile *.py, *.less, *.css, *.js, *.html set fileformat=unix
+autocmd FileType python set colorcolumn=79 | set textwidth=120
 
 if has("gui_running")
   if has("gui_gtk2")
@@ -90,6 +89,7 @@ autocmd BufNewFile,BufReadPost *.css setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.sass setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.scss setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.less setl shiftwidth=2 expandtab
+autocmd BufNewFile,BufReadPost *.html setl shiftwidth=2 expandtab
 
 set laststatus=2
 let g:airline_section_b = '%{&ff}%   %{&fileencoding?&fileencoding:&encoding}'
@@ -109,7 +109,6 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'groenewege/vim-less'
 Plugin 'skammer/vim-css-color.git'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'scrooloose/syntastic'
 call vundle#end()
 
 let g:phpqa_codesniffer_args = "--standard=Zend"
@@ -123,22 +122,11 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Flake8 autofix
 map <F6> :PyFlakeAuto<CR>
+let g:PyFlakeMaxLineLength = 120
+let g:PyFlakeDisabledMessages = 'E501'
 " StripWhitespace
 map <F7> :StripWhitespace<CR>
-autocmd FileType python,html,javascript,css autocmd BufWritePre <buffer> StripWhitespace
+autocmd FileType html,javascript,css autocmd BufWritePre <buffer> StripWhitespace
 
-au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.jsx set filetype=javascript
-
-" syntastic
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_css_checkers = ['stylelint']
+au BufNewFile,BufRead *.less set filetype=less
