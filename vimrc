@@ -4,7 +4,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
-set columns=160 lines=30
+set columns=120 lines=30
 set linespace=5
 set nocompatible
 set wrap
@@ -128,6 +128,7 @@ call vundle#end()
 tab sball
 set switchbuf=useopen
 set laststatus=2
+nmap <leader>t :TagbarToggle<CR>
 nmap <F9> :bprev<CR>
 nmap <F10> :bnext<CR>
 nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
@@ -147,12 +148,12 @@ let g:airline_powerline_fonts=0
 " TagBar settings
 let g:tagbar_autofocus=0
 let g:tagbar_width=42
-autocmd BufEnter *.py,*.go :call tagbar#autoopen(0)
+"autocmd BufEnter *.py,*.go :call tagbar#autoopen(0)
 
 " NERDTree settings
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']
 autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " SnipMate settings
 let g:snippets_dir='~/.vim/vim-snippets/snippets'
@@ -209,15 +210,7 @@ let g:pymode_syntax_builtin_types=g:pymode_syntax_all
 let g:pymode_syntax_highlight_exceptions=g:pymode_syntax_all
 let g:pymode_syntax_docstrings=g:pymode_syntax_all
 
-" highlight 'long' lines (>= 80 symbols) in python files
-augroup vimrc_autocmds
-    autocmd!
-    autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
-    autocmd FileType python,rst,c,cpp set nowrap
-    autocmd FileType python,rst,c,cpp set colorcolumn=80
-augroup END
-autocmd FileType python set colorcolumn=79 | set textwidth=140
+autocmd FileType python set colorcolumn=79 | set textwidth=180
 
 " code folding
 let g:pymode_folding=0
